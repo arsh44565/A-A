@@ -1,32 +1,52 @@
-const body = document.querySelector("body"),
-      modeToggle = body.querySelector(".mode-toggle");
-      sidebar = body.querySelector("nav");
-      sidebarToggle = body.querySelector(".sidebar-toggle");
+var current = null;
 
-let getMode = localStorage.getItem("mode");
-if(getMode && getMode ==="dark"){
-    body.classList.toggle("dark");
-}
-
-let getStatus = localStorage.getItem("status");
-if(getStatus && getStatus ==="close"){
-    sidebar.classList.toggle("close");
-}
-
-modeToggle.addEventListener("click", () =>{
-    body.classList.toggle("dark");
-    if(body.classList.contains("dark")){
-        localStorage.setItem("mode", "dark");
-    }else{
-        localStorage.setItem("mode", "light");
-    }
+document.querySelector('#email').addEventListener('focus', function(e) {
+    if (current) current.pause();
+    current = anime({
+        targets: 'path',
+        strokeDashoffset: {
+            value: 0,
+            duration: 700,
+            easing: 'easeOutQuart'
+        },
+        strokeDasharray: {
+            value: '240 1386',
+            duration: 700,
+            easing: 'easeOutQuart'
+        }
+    });
 });
 
-sidebarToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-    if(sidebar.classList.contains("close")){
-        localStorage.setItem("status", "close");
-    }else{
-        localStorage.setItem("status", "open");
-    }
-})
+document.querySelector('#password').addEventListener('focus', function(e) {
+    if (current) current.pause();
+    current = anime({
+        targets: 'path',
+        strokeDashoffset: {
+            value: -336,
+            duration: 700,
+            easing: 'easeOutQuart'
+        },
+        strokeDasharray: {
+            value: '240 1386',
+            duration: 700,
+            easing: 'easeOutQuart'
+        }
+    });
+});
+
+document.querySelector('#submit').addEventListener('focus', function(e) {
+    if (current) current.pause();
+    current = anime({
+        targets: 'path',
+        strokeDashoffset: {
+            value: -730,
+            duration: 700,
+            easing: 'easeOutQuart'
+        },
+        strokeDasharray: {
+            value: '530 1386',
+            duration: 700,
+            easing: 'easeOutQuart'
+        }
+    });
+});
